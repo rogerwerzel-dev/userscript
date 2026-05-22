@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Gerenciador de Userscripts</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>📜 Gerenciador de Userscripts</h1>
+    
+    <div class="toolbar">
+      <button id="btnNew">➕ Novo Script</button>
+      <button id="btnRefresh">🔄 Recarregar</button>
+    </div>
+    
+    <div id="scriptsList" class="scripts-list">
+      <!-- Lista será inserida aqui -->
+    </div>
+    
+    <!-- Modal de edição -->
+    <div id="editorModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modalTitle">Editar Script</h2>
+        <form id="scriptForm">
+          <label>Nome:</label>
+          <input type="text" id="scriptName" required>
+          
+          <label>Padrões de URL (um por linha):</label>
+          <textarea id="scriptMatches" rows="3" placeholder="*://*.example.com/*&#10;https://github.com/*" required></textarea>
+          <small>Use * como curinga. Ex: *://*.youtube.com/*</small>
+          
+          <label>Executar:</label>
+          <select id="scriptRunAt">
+            <option value="document-start">document-start (antes do DOM)</option>
+            <option value="document-end">document-end (após DOM)</option>
+            <option value="document-idle">document-idle (após página carregar)</option>
+          </select>
+          
+          <label>Código JavaScript:</label>
+          <textarea id="scriptCode" rows="10" placeholder="// Seu código aqui" required></textarea>
+          
+          <label>
+            <input type="checkbox" id="scriptEnabled"> Ativado
+          </label>
+          
+          <div class="form-buttons">
+            <button type="submit">Salvar</button>
+            <button type="button" id="btnCancel">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <script src="manage.js"></script>
+</body>
+</html>
